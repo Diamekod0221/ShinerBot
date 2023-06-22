@@ -1,0 +1,7 @@
+token: "MTExOTk3NjU2MjkyMjYzNTMxNA.GHqH_6.SJKNOTWvrFJUz16Am5b9WAOrsYHREylkoSa8sU"
+
+allowedCommands:
+  - !play
+  - !shiner
+  - !disconnect
+  - !goodole'south
