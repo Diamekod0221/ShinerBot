@@ -1,0 +1,8 @@
+application:
+  botToken: "MTExOTk3NjU2MjkyMjYzNTMxNA.GJiBBp.QyFZSYhdqYJ_CLGtksg7mdrKxsEVg253cshXBU"
+  clientToken: "cvrCXjV3gyAX_4HZcxmxAAzQra82kLf0"
+  allowedCommands:
+    - play
+    - shiner
+    - disconnect
+    - goodole'south
