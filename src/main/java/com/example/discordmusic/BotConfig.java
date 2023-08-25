@@ -3,25 +3,30 @@ package com.example.discordmusic;
 import discord4j.core.DiscordClientBuilder;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.Event;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Configuration
 public class BotConfig {
 
-    BotProperties botProperties;
+    private static final Logger log = LoggerFactory.getLogger(BotConfig.class);
+
+    private final BotProperties botProperties;
+
+    final private Map<String, Command> commandMap;
 
     @Autowired
-    public BotConfig(BotProperties botProperties){
+    public BotConfig(BotProperties botProperties, Commands commands){
         this.botProperties = botProperties;
+        this.commandMap = commands.getCommandsMap();
     }
-
-    private static final Logger log = LoggerFactory.getLogger(BotConfig.class);
 
     @Bean
     public <T extends Event> GatewayDiscordClient gatewayDiscordClient(List<EventListener<T>> eventListeners) {
@@ -44,9 +49,15 @@ public class BotConfig {
         }
 
         return client;
+
     }
 
-    public List<String> getAllowedCommands(){
-        return botProperties.getAllowedCommands();
+
+    public Set<String> getAllowedCommands(){
+        return commandMap.keySet();
+    }
+
+    public Command getCommandAction(String command){
+        return commandMap.get(command);
     }
 }

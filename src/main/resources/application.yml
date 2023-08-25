@@ -6,3 +6,12 @@ application:
     - shiner
     - disconnect
     - goodole'south
+
+  player:
+    config:
+      frameBuffer:
+        duration: 20000
+        audioDataFormat:
+          channels: 2
+          sampleRate: 48000
+          chunkSampleCount: 960
